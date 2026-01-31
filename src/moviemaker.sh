@@ -16,7 +16,3 @@ ffmpeg -f image2 -i ${RAW_IMAGE_DIR}/${date}/%*.jpg -vcodec libx264 -r 60 -strft
 #Clean out old data
 find ${RAW_IMAGE_DIR} -type d -ctime +${DAYS_TO_KEEP} -exec rm -rf '{}' \;
 
-
-#Post processed video to YouTube
-/usr/local/timelapse/upload-yt.sh ${PROCESSED_VID_DIR}/"${date}-${CAMERA_NAME}".mp4
-

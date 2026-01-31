@@ -24,6 +24,7 @@ fi
 
 echo "AWAY WE GO!"
 echo "${CAMERA_NAME}" > /camera.name
+#TODO seed minute config
 crontab /usr/local/timelapse/timelapse.cron
 cron -f
 #service cron start

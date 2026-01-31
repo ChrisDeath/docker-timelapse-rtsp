@@ -1,8 +1,11 @@
-# timelapse
-Set of scripts run in a docker to capture RTSP stream, create a timelapse and upload to youtube.
+# docker-timelapse-rtsp
+Set of scripts run in a docker to capture RTSP stream & create a timelapse video.
 
+It is based on https://github.com/inventari/docker-timelapse but removed weahter info and youtube upload.
 
-Edit .env to fit your filestructure
+# Usage
+
+Edit .env to fit your file structure
 
 Edit docker-compose.yml to fit your local setup.
 

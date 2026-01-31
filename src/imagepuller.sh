@@ -7,8 +7,8 @@ if [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 	mkdir -p ${RAW_IMAGE_DIR}
 fi
 
-if [ ! -z "cat ${CONDITIONS_OVERLAY_TXT_FILE}" ] && [ -f "${CONDITIONS_OVERLAY_FONT_FILE}" ] ; then
-	for SEC in 00 15 30 45;
+if [ ! -z "${CONDITIONS_OVERLAY_TXT_FILE}" ] && [ -f "${CONDITIONS_OVERLAY_FONT_FILE}" ] ; then
+	for SEC in 00;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} \
 		-vf drawtext="textfile=${CONDITIONS_OVERLAY_TXT_FILE} \
@@ -25,7 +25,7 @@ if [ ! -z "cat ${CONDITIONS_OVERLAY_TXT_FILE}" ] && [ -f "${CONDITIONS_OVERLAY_F
 		sleep 14
 	done
 	else
-	for SEC in 00 15 30 45;
+	for SEC in 00;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r 25 -an -vframes 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
 		sleep 14

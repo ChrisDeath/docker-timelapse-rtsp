@@ -3,44 +3,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      #image: timelapse:1.0
-    container_name: DrivewayCam
+    container_name: LodgiaCam
     environment:
     - PGID=${PGID}
     - PUID=${PUID}
     - TZ=${TZ}
-    - CAMERA_NAME=DrivewayCam
-    hostname: ${DOCKERHOSTNAME}
+    - CAMERA_NAME=lodgia
+    hostname: ${HOSTNAME}
     logging:
       driver: json-file
       options:
-        max-file: ${DOCKERLOGGING_MAXFILE}
-        max-size: ${DOCKERLOGGING_MAXSIZE}
+        max-file: ${LOGGING_MAXFILE}
+        max-size: ${LOGGING_MAXSIZE}
     restart: unless-stopped
     volumes:
     - /etc/localtime:/etc/localtime:ro
-    - ${DOCKERCONFDIR}/timelapse/:/timelapse_data
-    - ${DOCKERSHAREDDIR}:/shared
-  backyardcam:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      #image: timelapse:1.0
-    container_name: BackyardCam
-    environment:
-    - PGID=${PGID}
-    - PUID=${PUID}
-    - TZ=${TZ}
-    - CAMERA_NAME=BackyardCam
-    hostname: ${DOCKERHOSTNAME}
-    logging:
-      driver: json-file
-      options:
-        max-file: ${DOCKERLOGGING_MAXFILE}
-        max-size: ${DOCKERLOGGING_MAXSIZE}
-    restart: unless-stopped
-    volumes:
-    - /etc/localtime:/etc/localtime:ro
-    - ${DOCKERCONFDIR}/timelapse/:/timelapse_data
-    - ${DOCKERSHAREDDIR}:/shared
-version: "3.4"
+    - ${TIMELAPS_DIR}/:/timelapse_data
