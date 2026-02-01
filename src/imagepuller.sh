@@ -17,14 +17,14 @@ if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
 		:boxborderw=1 \
 		:boxcolor=black@0.2 \
 		:reload=1" \
-		-rtsp_transport udp -r 25 -an  -vframes 1 -strftime 1 \
+		-rtsp_transport udp -r ${CAMERA_RTSP_FRAMERATE} -an  -frames:v 1 -strftime 1 \
 		"${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
 		sleep 14
 	done
 	else
 	for SEC in 00;
 	do 
-		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r 25 -an -vframes 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
+		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r ${CAMERA_RTSP_FRAMERATE} -an -frames:v 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
 		sleep 14
 	done
 fi
