@@ -24,10 +24,15 @@ if [ -z "${CAMERA_RTSP}" ] ; then
 fi
 
 echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
-echo "AWAY WE GO!"
 
 echo "${CAMERA_NAME}" > /camera.name
 #TODO seed minute config
+sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
+sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
+
+echo "Using following Cron config:"
+cat /usr/local/timelapse/timelapse.cron
+
 crontab /usr/local/timelapse/timelapse.cron
 cron -f
 #service cron start
@@ -36,3 +41,4 @@ cron -f
 #Hang around forever
 #tail -f /var/log/cron.log
 
+echo "Finished setup!"
