@@ -6,16 +6,22 @@ if [ -z "${CAMERA_NAME}" ] ; then
 	exit 1
 fi
 
+export TIMELAPSE_DATA="/timelapse_data/"
+export CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
+export RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
+export PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
+
 #Create folder structure if not present
-if [ -n "${CAMERA_NAME}" ] && [ ! -f "/timelapse_data/${CAMERA_NAME}/timelapse.cfg" ] ; then
+if [ -n "${RAW_IMAGE_DIR}" ] && [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 	#Remove "" from name string
-	CAMERA_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"${CAMERA_NAME}"`
-	mkdir -p /timelapse_data/${CAMERA_NAME}/raw/
-	cp /usr/local/timelapse/timelapse.cfg.example /timelapse_data/${CAMERA_NAME}/timelapse.cfg
+	#CAMERA_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"${CAMERA_NAME}"`
+	mkdir -p ${RAW_IMAGE_DIR}
 fi
 
-. /timelapse_data/${CAMERA_NAME}/timelapse.cfg
-
+#if a cfg file exists then overwrite env settings
+if [ -n "${CAMERA_HOME}" ] && [ ! -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
+  . ${CAMERA_HOME}/timelapse.cfg
+fi
 
 if [ -z "${CAMERA_RTSP}" ] ; then
 	echo "Camera RTSP Stream not set, exiting..."

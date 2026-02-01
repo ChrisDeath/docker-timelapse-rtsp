@@ -1,12 +1,13 @@
 if [ -z "${CAMERA_NAME}" ]; then 
 	CAMERA_NAME=`cat /camera.name`
 fi
-. /timelapse_data/${CAMERA_NAME}/timelapse.cfg
 
-date="$(date "+%Y-%m-%d")"
+#if a cfg file exists then overwrite env settings
+if [ -n "${CAMERA_HOME}" ] && [ ! -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
+  . ${CAMERA_HOME}/timelapse.cfg
+fi
 
-#Wait for 5min to grab all images from current day
-sleep 300
+date="$(date "+%Y-%m-%d" -d "1 day ago")"
 
 mkdir -p ${RAW_IMAGE_DIR}/${date}
 mv ${RAW_IMAGE_DIR}/${date}_* ${RAW_IMAGE_DIR}/${date}/

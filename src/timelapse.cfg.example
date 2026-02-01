@@ -1,13 +1,7 @@
-####Defaults, don't change#####
-TIMELAPSE_DATA="/timelapse_data/"
-CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
-RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
-PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
-
 #userstuff
 #CAMERA_RTSP="rtsp://user:password@IP:554/stream"
 CAMERA_RTSP=""
-#OVERLAY_TXT_FILE="/timelapse/overlay.txt"
+#OVERLAY_TXT_FILE="overlay.txt"
 OVERLAY_TXT_FILE=""
 OVERLAY_FONT_FILE=""
 DAYS_TO_KEEP="7"

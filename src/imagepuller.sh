@@ -1,7 +1,11 @@
 if [ -z "${CAMERA_NAME}" ]; then 
 	CAMERA_NAME=`cat /camera.name`
 fi
-. /timelapse_data/${CAMERA_NAME}/timelapse.cfg
+
+#if a cfg file exists then overwrite env settings
+if [ -n "${CAMERA_HOME}" ] && [ ! -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
+  . ${CAMERA_HOME}/timelapse.cfg
+fi
 
 if [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 	mkdir -p ${RAW_IMAGE_DIR}
@@ -11,8 +15,8 @@ if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
 	for SEC in 00;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} \
-		-vf drawtext="textfile=${OVERLAY_TXT_FILE} \
-		:fontfile=${OVERLAY_FONT_FILE} \
+		-vf drawtext="textfile=${CAMERA_HOME}/${OVERLAY_TXT_FILE} \
+		:fontfile=${CAMERA_HOME}/${OVERLAY_FONT_FILE} \
 		:box=1 \
 		:x=1:y=1 \
 		:fontsize=32 \
