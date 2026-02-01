@@ -1,7 +1,13 @@
 #!/bin/bash
 
+if [ -z "${CAMERA_NAME}" ] ; then
+	echo "Camera name not set, exiting..."
+	sleep 30
+	exit 1
+fi
+
 #Create folder structure if not present
-if [ ! -z "${CAMERA_NAME}" ] && [ ! -f "/timelapse_data/${CAMERA_NAME}/timelapse.cfg" ] ; then
+if [ -n "${CAMERA_NAME}" ] && [ ! -f "/timelapse_data/${CAMERA_NAME}/timelapse.cfg" ] ; then
 	#Remove "" from name string
 	CAMERA_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"${CAMERA_NAME}"`
 	mkdir -p /timelapse_data/${CAMERA_NAME}/raw/
@@ -16,13 +22,10 @@ if [ -z "${CAMERA_RTSP}" ] ; then
 	sleep 30
 	exit 1
 fi
-if [ -z "${CAMERA_NAME}" ] ; then
-	echo "Camera name not set, exiting..."
-	sleep 30
-	exit 1
-fi
 
+echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
 echo "AWAY WE GO!"
+
 echo "${CAMERA_NAME}" > /camera.name
 #TODO seed minute config
 crontab /usr/local/timelapse/timelapse.cron

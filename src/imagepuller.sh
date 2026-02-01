@@ -7,12 +7,12 @@ if [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 	mkdir -p ${RAW_IMAGE_DIR}
 fi
 
-if [ ! -z "${CONDITIONS_OVERLAY_TXT_FILE}" ] && [ -f "${CONDITIONS_OVERLAY_FONT_FILE}" ] ; then
+if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
 	for SEC in 00;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} \
-		-vf drawtext="textfile=${CONDITIONS_OVERLAY_TXT_FILE} \
-		:fontfile=${CONDITIONS_OVERLAY_FONT_FILE} \
+		-vf drawtext="textfile=${OVERLAY_TXT_FILE} \
+		:fontfile=${OVERLAY_FONT_FILE} \
 		:box=1 \
 		:x=1:y=1 \
 		:fontsize=32 \

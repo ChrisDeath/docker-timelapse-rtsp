@@ -5,13 +5,10 @@ RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
 PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
 
 #userstuff
-if [ ! -z "${CAMERA_NAME}" ] ; then
-	CAMERA_NAME=""
-fi
-#CAMERA_RTSP="rtsp://IP:554/stream"
+#CAMERA_RTSP="rtsp://user:password@IP:554/stream"
 CAMERA_RTSP=""
 #OVERLAY_TXT_FILE="/timelapse/overlay.txt"
-CONDITIONS_OVERLAY_TXT_FILE=""
-CONDITIONS_OVERLAY_FONT_FILE=""
+OVERLAY_TXT_FILE=""
+OVERLAY_FONT_FILE=""
 DAYS_TO_KEEP="7"
 

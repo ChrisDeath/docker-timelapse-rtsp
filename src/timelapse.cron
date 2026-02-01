@@ -1,7 +1,7 @@
 #Every minute of every day
 * * * * * sh /usr/local/timelapse/imagepuller.sh >> /var/log/cron.log 2>&1
 
-#Once a day at 23:55
-55 23 * * * sh /usr/local/timelapse/moviemaker.sh >> /var/log/cron.log 2>&1
+#Once a day at 23:59
+59 23 * * * sh /usr/local/timelapse/moviemaker.sh >> /var/log/cron.log 2>&1
 
 
