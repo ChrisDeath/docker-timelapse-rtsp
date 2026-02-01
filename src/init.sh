@@ -22,8 +22,6 @@ if [ -z "${CAMERA_RTSP}" ] ; then
 	exit 1
 fi
 
-echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
-
 echo "CAMERA_NAME=\"${CAMERA_NAME}\"" >> /settings.cfg
 echo "TIMELAPSE_DATA=\"${TIMELAPSE_DATA}\"" >> /settings.cfg
 echo "CAMERA_HOME=\"${CAMERA_HOME}\"" >> /settings.cfg
@@ -33,6 +31,9 @@ echo "CAMERA_RTSP=\"${CAMERA_RTSP}\"" >> /settings.cfg
 echo "OVERLAY_TXT_FILE=\"${OVERLAY_TXT_FILE}\"" >> /settings.cfg
 echo "OVERLAY_FONT_FILE=\"${OVERLAY_FONT_FILE}\"" >> /settings.cfg
 echo "DAYS_TO_KEEP=\"${DAYS_TO_KEEP}\"" >> /settings.cfg
+
+echo "Using following settings:"
+cat /settings.cfg
 
 sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
 sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
