@@ -1,5 +1,5 @@
 services:
-  drivewaycam:
+  lodgiacam:
     build:
       context: .
       dockerfile: Dockerfile
