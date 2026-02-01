@@ -11,9 +11,9 @@ services:
     - CAMERA_NAME=${CAMERA_NAME}
     - IMAGE_CRON_PATTERN=${IMAGE_CRON_PATTERN}
     - MOVIE_CRON_PATTERN=${MOVIE_CRON_PATTERN}
-    - #CAMERA_RTSP="rtsp://user:password@IP:554/stream"
+    #CAMERA_RTSP="rtsp://user:password@IP:554/stream"
     - CAMERA_RTSP=${CAMERA_RTSP}
-    - #OVERLAY_TXT_FILE="overlay.txt"
+    #OVERLAY_TXT_FILE="overlay.txt"
     - OVERLAY_TXT_FILE=${OVERLAY_TXT_FILE}
     - OVERLAY_FONT_FILE=${OVERLAY_FONT_FILE}
     - DAYS_TO_KEEP=${DAYS_TO_KEEP}
