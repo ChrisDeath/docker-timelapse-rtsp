@@ -19,7 +19,7 @@ if [ -n "${RAW_IMAGE_DIR}" ] && [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 fi
 
 #if a cfg file exists then overwrite env settings
-if [ -n "${CAMERA_HOME}" ] && [ ! -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
+if [ -n "${CAMERA_HOME}" ] && [ -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
   . ${CAMERA_HOME}/timelapse.cfg
 fi
 
@@ -33,6 +33,8 @@ echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
 
 echo "${CAMERA_NAME}" > /camera.name
 
+sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
+sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
 echo "Using following Cron config:"
 cat /usr/local/timelapse/timelapse.cron
 
