@@ -27,8 +27,8 @@ echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
 
 echo "${CAMERA_NAME}" > /camera.name
 #TODO seed minute config
-sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
-sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
+sed -i "s/IMAGE_CRON_PATTERN/${IMAGE_CRON_PATTERN}/g" /usr/local/timelapse/timelapse.cron
+sed -i "s/MOVIE_CRON_PATTERN/${MOVIE_CRON_PATTERN}/g" /usr/local/timelapse/timelapse.cron
 
 echo "Using following Cron config:"
 cat /usr/local/timelapse/timelapse.cron
