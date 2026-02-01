@@ -13,6 +13,8 @@ RUN chmod +x /usr/local/timelapse/*.sh
 
 #Fix cron a little :)
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required     pam_loginuid.so/' /etc/pam.d/cron
+RUN sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
+RUN sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
 
 VOLUME /timelapse_data/
 
