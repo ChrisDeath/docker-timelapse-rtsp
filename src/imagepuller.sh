@@ -1,11 +1,4 @@
-if [ -z "${CAMERA_NAME}" ]; then 
-	CAMERA_NAME=`cat /camera.name`
-fi
-
-#if a cfg file exists then overwrite env settings
-if [ -n "${CAMERA_HOME}" ] && [ ! -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
-  . ${CAMERA_HOME}/timelapse.cfg
-fi
+. /settings.cfg
 
 if [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 	mkdir -p ${RAW_IMAGE_DIR}

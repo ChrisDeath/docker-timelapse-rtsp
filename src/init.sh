@@ -6,17 +6,10 @@ if [ -z "${CAMERA_NAME}" ] ; then
 	exit 1
 fi
 
-export TIMELAPSE_DATA="/timelapse_data/"
-export CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
-export RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
-export PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
-
-#Create folder structure if not present
-if [ -n "${RAW_IMAGE_DIR}" ] && [ ! -d "${RAW_IMAGE_DIR}" ] ; then
-	#Remove "" from name string
-	#CAMERA_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"${CAMERA_NAME}"`
-	mkdir -p ${RAW_IMAGE_DIR}
-fi
+TIMELAPSE_DATA="/timelapse_data/"
+CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
+RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
+PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
 
 #if a cfg file exists then overwrite env settings
 if [ -n "${CAMERA_HOME}" ] && [ -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
@@ -31,7 +24,13 @@ fi
 
 echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
 
-echo "${CAMERA_NAME}" > /camera.name
+echo "CAMERA_NAME=\"${CAMERA_NAME}\"" >> /settings.cfg
+echo "TIMELAPSE_DATA=\"${TIMELAPSE_DATA}\"" >> /settings.cfg
+echo "PROCESSED_VID_DIR=\"${PROCESSED_VID_DIR}\"" >> /settings.cfg
+echo "CAMERA_RTSP=\"${CAMERA_RTSP}\"" >> /settings.cfg
+echo "OVERLAY_TXT_FILE=\"${OVERLAY_TXT_FILE}\"" >> /settings.cfg
+echo "OVERLAY_FONT_FILE=\"${OVERLAY_FONT_FILE}\"" >> /settings.cfg
+echo "DAYS_TO_KEEP=\"${DAYS_TO_KEEP}\"" >> /settings.cfg
 
 sed -i "s/IMAGE_CRON_PATTERN/$IMAGE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
 sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelapse.cron
@@ -40,10 +39,5 @@ cat /usr/local/timelapse/timelapse.cron
 
 crontab /usr/local/timelapse/timelapse.cron
 cron -f
-#service cron start
-
-
-#Hang around forever
-#tail -f /var/log/cron.log
 
 echo "Finished setup!"
