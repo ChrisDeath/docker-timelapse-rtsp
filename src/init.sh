@@ -26,6 +26,8 @@ echo "Using ${CAMERA_RTSP} for ${CAMERA_NAME}"
 
 echo "CAMERA_NAME=\"${CAMERA_NAME}\"" >> /settings.cfg
 echo "TIMELAPSE_DATA=\"${TIMELAPSE_DATA}\"" >> /settings.cfg
+echo "CAMERA_HOME=\"${CAMERA_HOME}\"" >> /settings.cfg
+echo "RAW_IMAGE_DIR=\"${RAW_IMAGE_DIR}\"" >> /settings.cfg
 echo "PROCESSED_VID_DIR=\"${PROCESSED_VID_DIR}\"" >> /settings.cfg
 echo "CAMERA_RTSP=\"${CAMERA_RTSP}\"" >> /settings.cfg
 echo "OVERLAY_TXT_FILE=\"${OVERLAY_TXT_FILE}\"" >> /settings.cfg
