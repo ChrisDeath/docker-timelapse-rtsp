@@ -6,7 +6,7 @@ if [ -z "${CAMERA_NAME}" ] ; then
 	exit 1
 fi
 
-TIMELAPSE_DATA="/timelapse_data/"
+TIMELAPSE_DATA="/timelapse_data"
 CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
 RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
 PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"

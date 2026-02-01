@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update; apt-get install -y ffmpeg vlc cron; \
+RUN apt-get update; apt-get install -y ffmpeg vlc cron wget; \
 	touch /etc/crontab /etc/cron.*/*; \
 	touch /var/log/cron.log; \
 	rm -rf /var/lib/apt/lists/*
