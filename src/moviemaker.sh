@@ -1,5 +1,9 @@
 . /settings.cfg
 
+if [ ! -d "${PROCESSED_VID_DIR}" ] ; then
+	mkdir -p ${PROCESSED_VID_DIR}
+fi
+
 date="$(date "+%Y-%m-%d" -d "1 day ago")"
 
 mkdir -p ${RAW_IMAGE_DIR}/${date}
