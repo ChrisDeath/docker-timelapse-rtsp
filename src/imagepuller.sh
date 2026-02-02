@@ -5,7 +5,7 @@ if [ ! -d "${RAW_IMAGE_DIR}" ] ; then
 fi
 
 if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
-	for SEC in 00;
+	for SEC in 00 15 30 45;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} \
 		-vf drawtext="textfile=${CAMERA_HOME}/${OVERLAY_TXT_FILE} \
@@ -19,10 +19,12 @@ if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
 		:reload=1" \
 		-rtsp_transport udp -r 25 -pix_fmt yuvj422p -an -frames:v 1 -strftime 1 \
 		"${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
+		sleep 14
 	done
 	else
-	for SEC in 00;
+	for SEC in 00 15 30 45;
 	do 
 		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r 25 -pix_fmt yuvj422p -an -frames:v 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
+		sleep 14
 	done
 fi
