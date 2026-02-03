@@ -22,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '${CONTAINER_CPU_LIMIT:1.0}'
+          cpus: 3.0
     logging:
       driver: json-file
       options:
