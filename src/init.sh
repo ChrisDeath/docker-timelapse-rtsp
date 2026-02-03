@@ -9,7 +9,7 @@ fi
 TIMELAPSE_DATA="/timelapse_data"
 CAMERA_HOME="${TIMELAPSE_DATA}/${CAMERA_NAME}"
 RAW_IMAGE_DIR="${CAMERA_HOME}/raw"
-PROCESSED_VID_DIR="${TIMELAPSE_DATA}/done"
+PROCESSED_VID_DIR="${CAMERA_HOME}/done"
 
 #if a cfg file exists then overwrite env settings
 if [ -n "${CAMERA_HOME}" ] && [ -f "${CAMERA_HOME}/timelapse.cfg" ] ; then
