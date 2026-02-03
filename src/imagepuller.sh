@@ -24,7 +24,7 @@ if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
 	else
 	for SEC in 00 15 30 45;
 	do 
-		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r 25 -pix_fmt yuvj422p -an -frames:v 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
+		ffmpeg -y -i ${CAMERA_RTSP} -rtsp_transport udp -r 25 -pix_fmt yuvj422p -vf scale=${IMAGE_RESOLUTION}:-2,setsar=1:1 -an -frames:v 1 -strftime 1 "${RAW_IMAGE_DIR}/%Y-%m-%d_%H-%M-${SEC}.jpg"
 		sleep 14
 	done
 fi

@@ -1,6 +1,7 @@
 #userstuff
 #CAMERA_RTSP="rtsp://user:password@IP:554/stream"
 CAMERA_RTSP=""
+IMAGE_RESOLUTION=2560
 #OVERLAY_TXT_FILE="overlay.txt"
 OVERLAY_TXT_FILE=""
 OVERLAY_FONT_FILE=""

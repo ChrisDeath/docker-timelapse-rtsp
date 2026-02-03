@@ -28,6 +28,7 @@ echo "CAMERA_HOME=\"${CAMERA_HOME}\"" >> /settings.cfg
 echo "RAW_IMAGE_DIR=\"${RAW_IMAGE_DIR}\"" >> /settings.cfg
 echo "PROCESSED_VID_DIR=\"${PROCESSED_VID_DIR}\"" >> /settings.cfg
 echo "CAMERA_RTSP=\"${CAMERA_RTSP}\"" >> /settings.cfg
+echo "IMAGE_RESOLUTION=\"${IMAGE_RESOLUTION}\"" >> /settings.cfg
 echo "OVERLAY_TXT_FILE=\"${OVERLAY_TXT_FILE}\"" >> /settings.cfg
 echo "OVERLAY_FONT_FILE=\"${OVERLAY_FONT_FILE}\"" >> /settings.cfg
 echo "DAYS_TO_KEEP=\"${DAYS_TO_KEEP}\"" >> /settings.cfg
