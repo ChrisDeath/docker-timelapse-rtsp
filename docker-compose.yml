@@ -19,10 +19,10 @@ services:
     - OVERLAY_FONT_FILE=${OVERLAY_FONT_FILE}
     - DAYS_TO_KEEP=${DAYS_TO_KEEP}
     hostname: ${HOSTNAME}
-    deploy:
-      resources:
-        limits:
-          cpus: '3.0'
+    #deploy:
+    #  resources:
+    #    limits:
+    #      cpus: '3.0'
     logging:
       driver: json-file
       options:
