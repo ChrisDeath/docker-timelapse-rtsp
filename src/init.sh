@@ -41,7 +41,8 @@ sed -i "s/MOVIE_CRON_PATTERN/$MOVIE_CRON_PATTERN/g" /usr/local/timelapse/timelap
 echo "Using following Cron config:"
 cat /usr/local/timelapse/timelapse.cron
 
+echo "Starting Cron in Forground now until container terminates."
 crontab /usr/local/timelapse/timelapse.cron
 cron -f
 
-echo "Finished setup!"
+echo "Finished process!"
