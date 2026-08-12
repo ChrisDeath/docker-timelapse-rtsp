@@ -9,7 +9,7 @@ IMAGESHOT_COUNT_MINUTE=${IMAGESHOT_COUNT_MINUTE:-2}
 INTERVAL=$((60 / IMAGESHOT_COUNT_MINUTE))
 
 if [ ! -z "${OVERLAY_TXT_FILE}" ] && [ -f "${OVERLAY_FONT_FILE}" ] ; then
-	for i in $(seq 0 $((IMAGESHOT_COUNT_MINUTE - 1)));;
+	for i in $(seq 0 $((IMAGESHOT_COUNT_MINUTE - 1)));
 	do 
 		SEC=$(printf "%02d" $((i * INTERVAL)))
 		ffmpeg -y -i ${CAMERA_RTSP} \
